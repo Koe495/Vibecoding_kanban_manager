@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskMaster Workspace</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="CSS/variables.css">
     <link rel="stylesheet" href="CSS/reset.css">
     <link rel="stylesheet" href="CSS/layout.css">
@@ -15,9 +16,10 @@
     <link rel="stylesheet" href="CSS/kanban.css">
     <link rel="stylesheet" href="CSS/timetable.css">
 </head>
-<body class="theme-light"> 
+
+<body class="theme-light">
     <div class="app-container">
-        
+
         <aside class="sidebar">
             <div class="sidebar-top">
                 <div class="logo">
@@ -64,7 +66,8 @@
                 </div>
                 <div class="topbar-right">
                     <div class="filter-group" id="kanban-filters">
-                        <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-filter"></i> All</button>
+                        <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-filter"></i>
+                            All</button>
                         <button class="filter-btn" data-filter="high">High</button>
                         <button class="filter-btn" data-filter="medium">Medium</button>
                         <button class="filter-btn" data-filter="low">Low</button>
@@ -81,22 +84,51 @@
             </header>
 
             <div class="view-container">
-                
+
                 <div id="view-kanban" class="view-section">
+                    <div class="project-controls-bar"
+                        style="padding: 12px 24px; display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div
+                                style="font-weight:700; color:var(--text-main); display:flex; align-items:center; gap:8px;">
+                                <i class="fa-solid fa-folder" style="font-size:18px; color:var(--primary-color)"></i>
+                                <span id="project-title-display">Untitled Project</span>
+                            </div>
+                            <button class="btn-secondary" id="btn-edit-project-name" title="Đổi tên project"><i
+                                    class="fa-solid fa-pen"></i></button>
+                        </div>
+
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <button class="btn-outline" id="btn-save-project" title="Lưu project hiện tại"><i
+                                    class="fa-solid fa-save"></i> Lưu Project</button>
+                            <button class="btn-primary" id="btn-new-project" title="Tạo project mới"><i
+                                    class="fa-solid fa-folder-plus"></i> New Project</button>
+                        </div>
+                    </div>
                     <div class="kanban-area active-area">
                         <div class="area-header">
-                            <h3><i class="fa-solid fa-bolt"></i> Active Boards</h3>
-                            <button class="btn-primary" id="btn-add-board"><i class="fa-solid fa-plus"></i> New Board</button>
+                            <div style="display:flex; align-items:center; gap:12px;">
+                                <h3 style="display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-bolt"></i>
+                                    Active Boards</h3>
+
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <!-- Giữ nút New Board (nguyên chức năng cũ) -->
+                                <button class="btn-primary" id="btn-add-board"><i class="fa-solid fa-plus"></i> New
+                                    Board</button>
+
+                            </div>
                         </div>
                         <div class="board-wrapper" id="active-boards-container">
-                            </div>
+                        </div>
                     </div>
                     <div class="kanban-area completed-area" id="completed-area-wrapper">
                         <div class="area-header">
                             <h3><i class="fa-solid fa-check-double"></i> Completed Boards</h3>
                         </div>
                         <div class="board-wrapper" id="completed-boards-container">
-                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -106,10 +138,11 @@
                             <h3><i class="fa-regular fa-clock"></i> Time-based Schedule</h3>
                             <p>Step 1 of 3</p>
                         </div>
-                        <div class="upload-box" id="drop-zone"> 
+                        <div class="upload-box" id="drop-zone">
                             <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
                             <h4>Tải ảnh Thời khóa biểu</h4>
-                            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">hoặc kéo thả ảnh vào khu vực này</p>
+                            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">hoặc kéo thả ảnh
+                                vào khu vực này</p>
                             <button class="btn-primary" id="btn-upload-trigger">Chọn ảnh</button>
                             <input type="file" id="file-upload" class="hidden" accept="image/*">
                         </div>
@@ -123,35 +156,57 @@
                         <div class="config-section">
                             <h4><i class="fa-regular fa-clock"></i> Cấu hình Thời gian các Buổi</h4>
                             <div class="session-config-grid">
-                                <div class="session-box"><label>SÁNG</label><div class="time-inputs"><input type="time" value="07:00"> - <input type="time" value="11:30"></div></div>
-                                <div class="session-box"><label>CHIỀU</label><div class="time-inputs"><input type="time" value="13:00"> - <input type="time" value="17:30"></div></div>
-                                <div class="session-box"><label>TỐI</label><div class="time-inputs"><input type="time" value="18:30"> - <input type="time" value="21:00"></div></div>
+                                <div class="session-box"><label>SÁNG</label>
+                                    <div class="time-inputs"><input type="time" value="07:00"> - <input type="time"
+                                            value="11:30"></div>
+                                </div>
+                                <div class="session-box"><label>CHIỀU</label>
+                                    <div class="time-inputs"><input type="time" value="13:00"> - <input type="time"
+                                            value="17:30"></div>
+                                </div>
+                                <div class="session-box"><label>TỐI</label>
+                                    <div class="time-inputs"><input type="time" value="18:30"> - <input type="time"
+                                            value="21:00"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="config-section">
                             <div class="subject-table-header">
-                                <span>MÔN HỌC</span><span>NGÀY</span><span>GIỜ BẮT ĐẦU</span><span>GIỜ KẾT THÚC</span><span>PHÒNG</span>
+                                <span>MÔN HỌC</span><span>NGÀY</span><span>GIỜ BẮT ĐẦU</span><span>GIỜ KẾT
+                                    THÚC</span><span>PHÒNG</span>
                             </div>
                             <div id="subject-list-container"></div>
-                            <button class="btn-text" id="btn-add-subject-row"><i class="fa-solid fa-plus"></i> Thêm môn học</button>
+                            <button class="btn-text" id="btn-add-subject-row"><i class="fa-solid fa-plus"></i> Thêm môn
+                                học</button>
                         </div>
                         <div class="step-actions">
                             <button class="btn-text" id="btn-back-step-1">Quay lại tải ảnh</button>
-                            <button class="btn-primary btn-success" id="btn-confirm-timetable"><i class="fa-solid fa-check"></i> Chốt thời khóa biểu</button>
+                            <button class="btn-primary btn-success" id="btn-confirm-timetable"><i
+                                    class="fa-solid fa-check"></i> Chốt thời khóa biểu</button>
                         </div>
                     </div>
 
                     <div id="tt-step-3" class="tt-step-container hidden">
-                        <div class="tt-step-header" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                        <div class="tt-step-header"
+                            style="flex-direction: row; justify-content: space-between; align-items: center;">
                             <div>
                                 <h3><i class="fa-regular fa-clock"></i> Time-based Schedule</h3>
                                 <p>Grid View</p>
                             </div>
-                            <button class="btn-secondary" id="btn-edit-timetable"><i class="fa-solid fa-pen"></i> Chỉnh sửa thời gian</button>
+                            <button class="btn-secondary" id="btn-edit-timetable"><i class="fa-solid fa-pen"></i> Chỉnh
+                                sửa thời gian</button>
                         </div>
                         <div class="timetable-advanced-grid">
                             <div class="tt-grid-header">
-                                <div class="col-buoi">Buổi</div><div class="col-time">Thời gian</div><div class="col-day">Thứ 2</div><div class="col-day">Thứ 3</div><div class="col-day">Thứ 4</div><div class="col-day">Thứ 5</div><div class="col-day">Thứ 6</div><div class="col-day">Thứ 7</div><div class="col-day">CN</div>
+                                <div class="col-buoi">Buổi</div>
+                                <div class="col-time">Thời gian</div>
+                                <div class="col-day">Thứ 2</div>
+                                <div class="col-day">Thứ 3</div>
+                                <div class="col-day">Thứ 4</div>
+                                <div class="col-day">Thứ 5</div>
+                                <div class="col-day">Thứ 6</div>
+                                <div class="col-day">Thứ 7</div>
+                                <div class="col-day">CN</div>
                             </div>
                             <div class="tt-grid-body" id="advanced-grid-body"></div>
                         </div>
@@ -162,11 +217,11 @@
                     <div class="projects-header">
                         <h2>Bảng Công Việc Tổng Quan</h2>
                         <div class="projects-actions">
-                            <button class="btn-primary"><i class="fa-solid fa-plus"></i> Thêm Cột Mới</button>
+                            <button class="btn-primary"><i class="fa-solid fa-plus"></i> Tạo Project Mới</button>
                         </div>
                     </div>
                     <div class="projects-board-container" id="projects-board-container">
-                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -183,8 +238,12 @@
                     <div class="progress-inner"><span id="progress-percent">0%</span></div>
                 </div>
                 <div class="progress-stats">
-                    <div class="stat"><strong id="stat-done">0</strong><p>Completed</p></div>
-                    <div class="stat"><strong id="stat-pending">0</strong><p>Pending</p></div>
+                    <div class="stat"><strong id="stat-done">0</strong>
+                        <p>Completed</p>
+                    </div>
+                    <div class="stat"><strong id="stat-pending">0</strong>
+                        <p>Pending</p>
+                    </div>
                 </div>
             </div>
 
@@ -199,7 +258,8 @@
 
             <div class="widget focus-widget" id="focus-dashboard">
                 <div class="focus-header">
-                    <h4><i class="fa-solid fa-fire" style="color: #f59e0b;"></i> Hôm nay: <span id="total-focus-time">0p</span></h4>
+                    <h4><i class="fa-solid fa-fire" style="color: #f59e0b;"></i> Hôm nay: <span
+                            id="total-focus-time">0p</span></h4>
                     <button id="btn-focus-settings" title="Cài đặt thời gian"><i class="fa-solid fa-gear"></i></button>
                 </div>
                 <div class="focus-modes">
@@ -208,10 +268,13 @@
                 </div>
                 <div class="focus-timer-container">
                     <div class="timer-display" id="timer-display">25:00</div>
-                    <p id="timer-status" style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">Sẵn sàng tập trung</p>
+                    <p id="timer-status" style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">Sẵn sàng
+                        tập trung</p>
                     <div class="focus-controls">
-                        <button id="btn-focus-start" class="ctrl-btn play"><i class="fa-solid fa-play"></i> Bắt đầu</button>
-                        <button id="btn-focus-stop" class="ctrl-btn stop hidden"><i class="fa-solid fa-square"></i> Dừng</button>
+                        <button id="btn-focus-start" class="ctrl-btn play"><i class="fa-solid fa-play"></i> Bắt
+                            đầu</button>
+                        <button id="btn-focus-stop" class="ctrl-btn stop hidden"><i class="fa-solid fa-square"></i>
+                            Dừng</button>
                     </div>
                 </div>
                 <div class="focus-settings hidden" id="focus-settings-panel">
@@ -223,7 +286,8 @@
                         <label>Nghỉ (phút):</label>
                         <input type="number" id="set-break-time" value="5" min="1">
                     </div>
-                    <button id="btn-save-settings" class="btn-primary" style="width: 100%; padding: 4px; font-size: 12px; margin-top: 8px;">Lưu lại</button>
+                    <button id="btn-save-settings" class="btn-primary"
+                        style="width: 100%; padding: 4px; font-size: 12px; margin-top: 8px;">Lưu lại</button>
                 </div>
             </div>
         </aside>
@@ -287,7 +351,8 @@
                 <div class="form-group">
                     <label>Chọn màu nền (Pastel)</label>
                     <div class="color-picker" id="board-color-picker">
-                        <div class="color-option selected" data-color="red" style="background: var(--pastel-red);"></div>
+                        <div class="color-option selected" data-color="red" style="background: var(--pastel-red);">
+                        </div>
                         <div class="color-option" data-color="blue" style="background: var(--pastel-blue);"></div>
                         <div class="color-option" data-color="green" style="background: var(--pastel-green);"></div>
                         <div class="color-option" data-color="yellow" style="background: var(--pastel-yellow);"></div>
@@ -354,32 +419,67 @@
         </div>
     </div>
 
-    <div class="modal-overlay hidden" id="modal-add-project-col">
+    <!-- Replace existing modal-add-project-col with two separate modals: create + edit -->
+    <div class="modal-overlay hidden" id="modal-create-project">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Thêm Cột Dự Án Mới</h2>
+                <h2>Tạo Project Mới</h2>
                 <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <form id="form-add-project-col" class="modal-body">
-                <input type="hidden" id="edit-col-id">
+            <form id="form-create-project" class="modal-body">
                 <div class="form-group">
-                    <label>Tên Cột <span class="required">*</span></label>
-                    <input type="text" id="project-col-title" required placeholder="Ví dụ: Thiết kế, Phát triển...">
+                    <label>Tên Project <span class="required">*</span></label>
+                    <input type="text" id="create-project-title" required placeholder="Ví dụ: Học kỳ 2 - Đồ án">
                 </div>
                 <div class="form-group">
                     <label>Màu sắc đặc trưng</label>
-                    <select id="project-col-color">
-                        <option value="red">Đỏ (Red)</option>
-                        <option value="orange">Cam (Orange)</option>
-                        <option value="pink">Hồng (Pink)</option>
-                        <option value="yellow">Vàng (Yellow)</option>
-                        <option value="green">Xanh lá (Green)</option>
-                        <option value="blue">Xanh dương (Blue)</option>
+                    <select id="create-project-color">
+                        <option value="red">Đỏ</option>
+                        <option value="orange">Cam</option>
+                        <option value="pink">Hồng</option>
+                        <option value="yellow">Vàng</option>
+                        <option value="green">Xanh lá</option>
+                        <option value="blue" selected>Xanh dương</option>
+                        <option value="purple">Tím</option>
+                        <option value="gray">Xám</option>
                     </select>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary close-modal">Hủy</button>
-                    <button type="submit" class="btn-primary">Tạo cột</button>
+                    <button type="submit" class="btn-primary">Tạo Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modal-edit-project">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Chỉnh sửa Project</h2>
+                <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="form-edit-project" class="modal-body">
+                <input type="hidden" id="edit-project-id">
+                <div class="form-group">
+                    <label>Tên Project <span class="required">*</span></label>
+                    <input type="text" id="edit-project-title" required placeholder="Ví dụ: Học kỳ 2 - Đồ án">
+                </div>
+                <div class="form-group">
+                    <label>Màu sắc đặc trưng</label>
+                    <select id="edit-project-color">
+                        <option value="red">Đỏ</option>
+                        <option value="orange">Cam</option>
+                        <option value="pink">Hồng</option>
+                        <option value="yellow">Vàng</option>
+                        <option value="green">Xanh lá</option>
+                        <option value="blue">Xanh dương</option>
+                        <option value="purple">Tím</option>
+                        <option value="gray">Xám</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary close-modal">Hủy</button>
+                    <button type="submit" class="btn-primary">Lưu thay đổi</button>
                 </div>
             </form>
         </div>
@@ -393,7 +493,8 @@
             </div>
             <form id="form-add-project-card" class="modal-body">
                 <input type="hidden" id="card-col-id">
-                <input type="hidden" id="edit-card-id"> <div class="form-group"></div>
+                <input type="hidden" id="edit-card-id">
+                <div class="form-group"></div>
                 <div class="form-group">
 
                     <label>Tên Thẻ (Tính năng) <span class="required">*</span></label>
@@ -425,4 +526,5 @@
 
     <script type="module" src="./js/app.js"></script>
 </body>
+
 </html>
