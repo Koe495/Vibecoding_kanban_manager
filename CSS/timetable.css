@@ -1,0 +1,133 @@
+/* ==========================================================================
+   FILE: css/timetable.css
+   CÔNG DỤNG: Trang trí UI 3 bước của Module Timetable (Upload, Form, Grid)
+   ========================================================================== */
+
+#view-timetable {
+    padding: 24px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.tt-step-container {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation: fadeIn 0.3s ease;
+}
+.tt-step-container.hidden { display: none !important; }
+
+.tt-step-header { border-bottom: 1px solid var(--border-color); padding-bottom: 16px; }
+.tt-step-header h3 { font-size: 18px; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+.tt-step-header p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+/* --- BƯỚC 1: UPLOAD BOX --- */
+.upload-box {
+    border: 2px dashed #cbd5e1;
+    border-radius: var(--radius-lg);
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    max-width: 500px;
+    margin: 40px auto;
+    background: #f8fafc;
+}
+.upload-icon { font-size: 48px; color: var(--primary-color); }
+
+/* --- BƯỚC 2: CẤU HÌNH DỮ LIỆU --- */
+.config-section { background: var(--bg-body); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-color); }
+.config-section h4 { font-size: 14px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+
+/* Cấu hình Buổi */
+.session-config-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.session-box { background: var(--bg-surface); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); }
+.session-box label { font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 8px; }
+.time-inputs { display: flex; align-items: center; gap: 8px; }
+.time-inputs input { border: none; background: #f1f5f9; padding: 6px; border-radius: 4px; font-size: 13px; width: 100%; outline: none; }
+
+/* Bảng Môn học */
+.subject-table-header { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 40px; gap: 12px; padding: 0 12px 12px; border-bottom: 1px solid var(--border-color); font-size: 11px; font-weight: 700; color: var(--text-muted); }
+.subject-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 40px; gap: 12px; padding: 12px; border-bottom: 1px solid var(--border-color); align-items: center; background: var(--bg-surface); margin-bottom: 4px; border-radius: 4px; }
+.subject-row input, .subject-row select { width: 100%; padding: 8px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 13px; }
+.btn-delete-row { color: var(--text-muted); background: none; border: none; cursor: pointer; text-align: center; }
+.btn-delete-row:hover { color: var(--priority-high); }
+
+.step-actions { display: flex; justify-content: flex-end; gap: 16px; margin-top: 16px; }
+.btn-text { background: none; color: var(--text-muted); font-weight: 600; cursor: pointer; border: none; padding: 10px; }
+.btn-text:hover { color: var(--text-main); }
+.btn-success { background-color: #10b981; color: white; }
+.btn-success:hover { background-color: #059669; }
+
+/* --- BƯỚC 3: GRID VIEW FINAL --- */
+.timetable-advanced-grid {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+}
+
+.tt-grid-header {
+    display: grid;
+    grid-template-columns: 60px 80px repeat(7, minmax(120px, 1fr));
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+}
+.tt-grid-header > div { padding: 12px; border-right: 1px solid var(--border-color); }
+
+.tt-grid-row {
+    display: grid;
+    grid-template-columns: 60px 80px repeat(7, minmax(120px, 1fr));
+    border-bottom: 1px solid var(--border-color);
+    min-height: 150px;
+}
+.tt-grid-row:last-child { border-bottom: none; }
+
+.tt-cell { border-right: 1px solid var(--border-color); position: relative; padding: 4px; }
+.tt-cell-buoi { display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 700; color: var(--text-muted); font-size: 12px; letter-spacing: 2px; background: #f8fafc; }
+.tt-cell-time { display: flex; flex-direction: column; justify-content: space-between; padding: 8px; font-size: 11px; color: var(--text-muted); align-items: center; }
+
+/* Card Môn học tĩnh trên Grid */
+.tt-subject-card {
+    background: var(--pastel-blue);
+    border: 1px solid var(--pastel-blue-border);
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 12px;
+    color: var(--text-main);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    height: 100%; /* Căng đầy ô chứa nó */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.tt-subject-card.color-2 { background: var(--pastel-green); border-color: var(--pastel-green-border); }
+.tt-subject-card.color-3 { background: var(--pastel-orange); border-color: var(--pastel-orange-border); }
+.tt-subject-card.color-4 { background: var(--pastel-purple); border-color: var(--pastel-purple-border); }
+.tt-card-title { font-weight: 700; }
+.tt-card-info { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+
+/* Hiệu ứng mượt mà cho hộp Upload */
+.upload-box {
+    transition: all 0.3s ease;
+}
+
+/* Class này sẽ được JS thêm vào khi người dùng đang giữ file trên vùng drop */
+.upload-box.dragover {
+    background-color: var(--primary-light);
+    border-color: var(--primary-color);
+    border-style: solid; /* Đổi nét đứt thành nét liền */
+    transform: scale(1.02); /* Phóng to lên một xíu */
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+}

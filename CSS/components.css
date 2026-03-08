@@ -1,0 +1,283 @@
+/* ==========================================================================
+   FILE: components.css
+   KẾT NỐI: index.html (Áp dụng cho Buttons, Modals, Forms, Toggle, Widgets)
+   ========================================================================== */
+
+/* --- TYPOGRAPHY & LOGO --- */
+.logo { display: flex; align-items: center; gap: 12px; padding: 0 24px 24px; color: var(--text-main); }
+.logo-icon { width: 36px; height: 36px; background-color: var(--primary-color); color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; }
+
+/* --- SIDEBAR MENU --- */
+.menu { padding: 0 16px; }
+.menu-label { font-size: 12px; color: var(--text-light); font-weight: 700; margin-bottom: 12px; padding-left: 12px; letter-spacing: 0.5px; }
+.menu-item { display: flex; align-items: center; gap: 12px; padding: 12px; color: var(--text-muted); border-radius: var(--radius-md); margin-bottom: 4px; font-weight: 500; font-size: 15px; transition: all 0.2s; }
+.menu-item:hover { background-color: var(--bg-body); color: var(--text-main); }
+.menu-item.active { background-color: var(--primary-light); color: var(--primary-color); }
+.badge { margin-left: auto; background-color: var(--bg-surface); color: var(--text-main); font-size: 12px; padding: 2px 8px; border-radius: 12px; font-weight: 600; box-shadow: var(--shadow-sm); }
+.menu-item.active .badge { background-color: var(--primary-color); color: #fff; }
+.logout { color: var(--priority-high); }
+.logout:hover { background-color: var(--pastel-red); color: var(--priority-high); }
+
+/* --- TOPBAR COMPONENTS --- */
+.topbar-left { display: flex; align-items: center; gap: 16px; }
+.topbar-left h1 { font-size: 24px; font-weight: 700; }
+.task-count { background-color: var(--bg-body); color: var(--text-muted); padding: 4px 12px; border-radius: 16px; font-size: 14px; font-weight: 600; }
+.topbar-right { display: flex; align-items: center; gap: 24px; }
+.filter-group { display: flex; background-color: var(--bg-body); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 4px; gap: 4px; }
+.filter-btn { padding: 6px 16px; color: var(--text-muted); font-weight: 500; border-radius: 4px; font-size: 14px; transition: all 0.2s; }
+.filter-btn.active { background-color: var(--bg-surface); color: var(--primary-color); box-shadow: var(--shadow-sm); }
+.date-badge { background-color: var(--primary-light); color: var(--primary-color); padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.clear-date-btn { cursor: pointer; padding: 2px; }
+.clear-date-btn:hover { color: var(--priority-high); }
+.topbar-icons i { font-size: 20px; color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
+.topbar-icons i:hover { color: var(--text-main); }
+
+/* --- BUTTONS CHUNG --- */
+.btn-primary { background-color: var(--primary-color); color: #fff; padding: 10px 20px; border-radius: var(--radius-md); font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; transition: background 0.2s; }
+.btn-primary:hover { background-color: var(--primary-hover); }
+.btn-secondary { background-color: var(--bg-body); color: var(--text-main); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: var(--radius-md); font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+.btn-secondary:hover { background-color: var(--border-color); }
+
+/* --- MODALS (POPUP FORM) --- */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--bg-modal-overlay); z-index: 999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(2px); }
+.modal-content { background-color: var(--bg-surface); width: 100%; max-width: 500px; border-radius: var(--radius-lg); box-shadow: var(--shadow-modal); display: flex; flex-direction: column; max-height: 90vh; animation: modalFadeIn 0.3s ease; }
+@keyframes modalFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.modal-header { padding: 20px 24px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+.modal-header h2 { font-size: 18px; font-weight: 700; }
+.close-modal { font-size: 20px; color: var(--text-muted); padding: 4px; }
+.close-modal:hover { color: var(--priority-high); }
+.modal-body { padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 20px; }
+.modal-footer { padding: 20px 24px; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 12px; }
+
+/* --- FORMS --- */
+.form-group { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.form-row { display: flex; gap: 16px; width: 100%; }
+.form-group label { font-size: 14px; font-weight: 600; color: var(--text-main); }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; background-color: var(--bg-body); transition: border 0.2s; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--primary-color); background-color: var(--bg-surface); }
+.form-group textarea { resize: vertical; }
+
+/* Color Picker cho Board */
+.color-picker { display: flex; flex-wrap: wrap; gap: 12px; }
+.color-option { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: transform 0.2s; }
+.color-option:hover { transform: scale(1.1); }
+.color-option.selected { border-color: var(--text-main); transform: scale(1.1); box-shadow: 0 0 0 2px var(--bg-surface) inset; }
+
+/* --- TOGGLE SWITCH (Dành cho Settings) --- */
+.setting-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border-color); }
+.setting-item:last-child { border-bottom: none; }
+.setting-item h4 { font-size: 15px; margin-bottom: 4px; }
+.setting-item p { font-size: 13px; color: var(--text-muted); }
+.toggle-switch { position: relative; display: inline-block; width: 44px; height: 24px; flex-shrink: 0; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 24px; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--primary-color); }
+input:checked + .slider:before { transform: translateX(20px); }
+
+/* --- WIDGETS BÊN PHẢI --- */
+.widget { border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; background-color: var(--bg-surface); }
+.progress-widget { display: flex; flex-direction: column; align-items: center; }
+.progress-widget h3 { font-size: 16px; margin-bottom: 16px; font-weight: 700; width: 100%; text-align: left; }
+.progress-stats { display: flex; justify-content: space-between; width: 100%; margin-top: 16px; }
+.stat { text-align: center; background: var(--bg-body); padding: 12px; border-radius: var(--radius-md); flex: 1; margin: 0 4px; }
+.stat strong { font-size: 20px; display: block; color: var(--text-main); }
+.stat p { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.focus-widget { background-color: var(--primary-light); border: 1px solid var(--pastel-blue-border); display: flex; align-items: center; gap: 16px; padding: 16px; }
+.focus-icon { background-color: var(--bg-surface); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-color); box-shadow: var(--shadow-sm); }
+.focus-info h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.focus-info p { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+
+/* SVG Progress Circle */
+.progress-circle { position: relative; width: 140px; height: 140px; }
+.progress-circle svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.progress-circle circle { fill: none; stroke-width: 8; }
+.progress-circle circle.bg { stroke: var(--bg-body); }
+.progress-circle circle.progress { stroke: var(--primary-color); stroke-dasharray: 283; stroke-dashoffset: 283; stroke-linecap: round; transition: stroke-dashoffset 1s ease-out; }
+.progress-inner { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: var(--text-main); }
+
+/* --- AI LOADING SPINNER --- */
+.loading-content { align-items: center; padding: 40px; text-align: center; }
+.spinner { width: 50px; height: 50px; border: 5px solid var(--bg-body); border-top: 5px solid var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* --- USER PROFILE (GÓC DƯỚI SIDEBAR) --- */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-top: 8px;
+    background-color: var(--bg-body);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden; /* Tránh text dài làm vỡ layout */
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Tên dài quá sẽ hiện dấu ... */
+}
+
+.user-email {
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Biến nút Log out thành 1 cái icon tinh tế bên phải */
+.btn-logout-icon {
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-logout-icon:hover {
+    color: var(--priority-high);
+    background-color: var(--pastel-red);
+}
+/* --- WIDGET: MINI CALENDAR --- */
+.calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.calendar-header h4 { font-size: 15px; font-weight: 700; color: var(--text-main); }
+.calendar-header button { padding: 4px 8px; color: var(--text-muted); border-radius: 4px; transition: 0.2s; }
+.calendar-header button:hover { background: var(--bg-body); color: var(--text-main); }
+
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+.cal-day-name { font-weight: 700; color: var(--text-muted); padding-bottom: 8px; font-size: 11px; }
+
+.cal-cell { padding: 6px 0; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s; color: var(--text-main); font-size: 12px; font-weight: 500;}
+.cal-cell:hover:not(.empty) { background-color: var(--primary-light); color: var(--primary-color); }
+.cal-cell.empty { cursor: default; }
+
+/* Dấu chấm xanh cho Ngày hôm nay */
+.cal-cell.today { position: relative; font-weight: 700; color: var(--primary-color); }
+.cal-cell.today::after { content: ''; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background-color: var(--primary-color); border-radius: 50%; }
+
+/* Trạng thái khi được Click chọn */
+.cal-cell.selected { background-color: var(--primary-color) !important; color: white !important; font-weight: 700; box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3); }
+.cal-cell.selected::after { background-color: white; }
+
+/* --- BỘ ĐIỀU KHIỂN FOCUS (POMODORO & DEEP WORK) --- */
+#focus-dashboard { display: flex; flex-direction: column; gap: 12px; }
+.focus-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+.focus-header h4 { font-size: 14px; font-weight: 700; color: var(--text-main); }
+.focus-header span { color: var(--primary-color); font-weight: 800; font-size: 16px;}
+#btn-focus-settings { background: none; border: none; color: var(--text-muted); cursor: pointer; transition: 0.2s; }
+#btn-focus-settings:hover { color: var(--text-main); transform: rotate(90deg); }
+
+.focus-modes { display: flex; background: var(--bg-body); border-radius: var(--radius-sm); padding: 4px; }
+.mode-btn { flex: 1; border: none; background: transparent; padding: 6px; border-radius: 4px; font-size: 12px; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: 0.3s; }
+.mode-btn.active { background: var(--bg-surface); color: var(--primary-color); box-shadow: var(--shadow-sm); }
+
+.focus-timer-container { text-align: center; padding: 12px 0; }
+.timer-display { font-size: 36px; font-weight: 800; color: var(--text-main); font-variant-numeric: tabular-nums; letter-spacing: 2px; }
+.timer-display.break-mode { color: var(--priority-med); } /* Màu vàng khi nghỉ ngơi */
+
+.focus-controls { display: flex; gap: 8px; justify-content: center; }
+.ctrl-btn { border: none; padding: 8px 16px; border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; }
+.ctrl-btn.play { background: var(--primary-light); color: var(--primary-color); }
+.ctrl-btn.play:hover { background: var(--primary-color); color: white; }
+.ctrl-btn.stop { background: var(--pastel-red); color: var(--priority-high); }
+.ctrl-btn.stop:hover { background: var(--priority-high); color: white; }
+
+.focus-settings { background: var(--bg-body); padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); }
+.set-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 12px; }
+.set-row input { width: 50px; padding: 4px; border: 1px solid var(--border-color); border-radius: 4px; text-align: center; }
+
+/* ==========================================================================
+   GIAO DIỆN PROJECTS TỔNG QUAN (GIỐNG ẢNH MẪU)
+   ========================================================================== */
+#view-projects { display: flex; flex-direction: column; height: 100%; padding: 24px; gap: 20px; overflow: hidden; }
+.projects-header { display: flex; justify-content: space-between; align-items: center; }
+.projects-header h2 { font-size: 20px; font-weight: 700; color: var(--text-main); }
+
+.projects-board-container { display: flex; gap: 20px; overflow-x: auto; overflow-y: hidden; height: 100%; padding-bottom: 12px; }
+
+/* --- CỘT DỰ ÁN --- */
+.pj-column { width: 280px; min-width: 280px; background-color: #f4f5f7; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+/* Header của Cột (Đổi màu theo trạng thái) */
+.pj-col-header { padding: 12px 16px; color: white; font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; align-items: center; }
+.pj-col-header i { cursor: pointer; opacity: 0.8; }
+.pj-col-header i:hover { opacity: 1; }
+
+.pj-col-red { background-color: #ff4d4f; }    /* Thiết Kế */
+.pj-col-orange { background-color: #fa8c16; } /* Phát Triển */
+.pj-col-pink { background-color: #ff4d88; }   /* Kiểm Thử */
+.pj-col-yellow { background-color: #ffc53d; color: #333 !important; } /* Triển Khai */
+
+/* Vùng chứa thẻ */
+.pj-card-list { padding: 12px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; flex: 1; }
+
+/* Nút thêm thẻ dưới đáy */
+.pj-col-footer { padding: 12px; text-align: center; background: white; border-top: 1px solid #e8e8e8; color: var(--primary-color); font-weight: 600; cursor: pointer; transition: 0.2s; }
+.pj-col-footer:hover { background: #f0f7ff; }
+
+/* --- THẺ DỰ ÁN (PROJECT CARD) --- */
+.pj-card { background: white; border-radius: 6px; overflow: hidden; border: 1px solid #e8e8e8; box-shadow: 0 1px 3px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; }
+.pj-card:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+/* Tiêu đề thẻ (Cùng màu với cột) */
+.pj-card-header { padding: 8px 12px; color: white; font-weight: 600; font-size: 13px; }
+
+/* Phần thân chứa Checkbox & % */
+.pj-card-body { padding: 12px; display: flex; justify-content: space-between; align-items: center; background: white; }
+
+/* Các ô Checkbox tiến độ */
+.pj-progress-boxes { display: flex; gap: 4px; }
+.pj-box { width: 14px; height: 14px; border: 1.5px solid #d9d9d9; border-radius: 2px; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Ô đã tick (Màu trùng với màu của cột) */
+.pj-box.done-red { background: #ff4d4f; border-color: #ff4d4f; }
+.pj-box.done-orange { background: #fa8c16; border-color: #fa8c16; }
+.pj-box.done-pink { background: #ff4d88; border-color: #ff4d88; }
+.pj-box.done-yellow { background: #ffc53d; border-color: #ffc53d; }
+.pj-box.done-green { background: #52c41a; border-color: #52c41a; }
+.pj-box.done-blue { background: #1890ff; border-color: #1890ff; }
+
+/* Dấu tick trắng bên trong ô */
+.pj-box[class*="done-"]::after { content: '\f00c'; font-family: "Font Awesome 6 Free"; font-weight: 900; color: white; font-size: 9px; }
+
+/* Phần % */
+.pj-percent { font-weight: 800; font-size: 14px; color: #333; }
+/* 1. Bổ sung 2 màu Cột bị thiếu (Xanh lá & Xanh dương) */
+.pj-col-green { background-color: #52c41a; color: white; }
+.pj-col-blue { background-color: #1890ff; color: white; }
+
+/* 2. Đổi viền cho các ô vuông CHƯA TÍCH (Làm viền nhạt 50% để phân biệt với ô đã tích) */
+.pj-box.empty-red { border-color: rgba(255, 77, 79, 0.5); }
+.pj-box.empty-orange { border-color: rgba(250, 140, 22, 0.5); }
+.pj-box.empty-pink { border-color: rgba(255, 77, 136, 0.5); }
+.pj-box.empty-yellow { border-color: rgba(255, 197, 61, 0.8); }
+.pj-box.empty-green { border-color: rgba(82, 196, 26, 0.5); }
+.pj-box.empty-blue { border-color: rgba(24, 144, 255, 0.5); }

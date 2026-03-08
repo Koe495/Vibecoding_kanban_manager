@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - TaskMaster</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="CSS/variables.css">
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/login.css">
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div id="login-section">
+                <div class="login-header">
+                    <div class="logo-icon-large">T</div>
+                    <h2>TaskMaster</h2>
+                    <p>Đăng nhập để vào không gian làm việc của bạn</p>
+                </div>
+
+                <form id="form-login" class="login-form">
+                    <div class="form-group">
+                        <label for="email">Email sinh viên <span class="required">*</span></label>
+                        <div class="input-with-icon">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="email" required placeholder="Ví dụ: mssv@ntu.edu.vn">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Mật khẩu <span class="required">*</span></label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" required placeholder="Nhập mật khẩu...">
+                            <i class="fa-regular fa-eye-slash toggle-password" data-target="password"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="remember-me">
+                            <span>Ghi nhớ đăng nhập</span>
+                        </label>
+                        <a href="#" class="forgot-link">Quên mật khẩu?</a>
+                    </div>
+
+                    <button type="submit" class="btn-login" id="btn-submit">
+                        <span>Đăng nhập</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Chưa có tài khoản? <a href="#" id="link-to-register">Đăng ký ngay</a></p>
+                </div>
+            </div>
+
+            <div id="register-section" class="hidden">
+                <div class="login-header">
+                    <div class="logo-icon-large">T</div>
+                    <h2>Tạo tài khoản</h2>
+                    <p>Bắt đầu quản lý công việc và học tập hiệu quả</p>
+                </div>
+
+                <form id="form-register" class="login-form">
+                    <div class="form-group">
+                        <label for="reg-name">Họ và tên <span class="required">*</span></label>
+                        <div class="input-with-icon">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="reg-name" required placeholder="Ví dụ: Hiệp Nguyễn">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-email">Email <span class="required">*</span></label>
+                        <div class="input-with-icon">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="reg-email" required placeholder="Nhập email...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password">Mật khẩu <span class="required">*</span></label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="reg-password" required placeholder="Tạo mật khẩu...">
+                            <i class="fa-regular fa-eye-slash toggle-password" data-target="reg-password"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-confirm">Xác nhận mật khẩu <span class="required">*</span></label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-check-double"></i>
+                            <input type="password" id="reg-confirm" required placeholder="Nhập lại mật khẩu...">
+                        </div>
+                        <small id="pwd-error" class="hidden" style="color: var(--priority-high); margin-top: 4px; font-size: 12px;">Mật khẩu không khớp!</small>
+                    </div>
+
+                    <button type="submit" class="btn-login" id="btn-register-submit" style="background-color: #10b981;">
+                        <span>Đăng ký tài khoản</span>
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Đã có tài khoản? <a href="#" id="link-to-login">Đăng nhập</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/auth.js"></script>
+</body>
+</html>

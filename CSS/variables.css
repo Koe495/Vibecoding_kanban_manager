@@ -1,0 +1,82 @@
+:root {
+    /* Main Theme Colors */
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-light: #eff6ff;
+    
+    /* Backgrounds */
+    --bg-body: #f8f9fb;
+    --bg-surface: #ffffff;
+    --bg-modal-overlay: rgba(0, 0, 0, 0.4);
+    
+    /* Text */
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --text-light: #9ca3af;
+    
+    /* Borders */
+    --border-color: #e5e7eb;
+    
+    /* Kanban Area Split */
+    --kanban-active-height: 75%;
+    --kanban-completed-height: 25%;
+
+    /* 8 Pastel Colors cho Board theo yêu cầu */
+    --pastel-red: #fef2f2;
+    --pastel-red-border: #fee2e2;
+    --pastel-red-text: #ef4444;
+
+    --pastel-blue: #eff6ff;
+    --pastel-blue-border: #dbeafe;
+    --pastel-blue-text: #3b82f6;
+
+    --pastel-green: #ecfdf5;
+    --pastel-green-border: #d1fae5;
+    --pastel-green-text: #10b981;
+
+    --pastel-yellow: #fefce8;
+    --pastel-yellow-border: #fef08a;
+    --pastel-yellow-text: #eab308;
+
+    --pastel-purple: #faf5ff;
+    --pastel-purple-border: #e9d5ff;
+    --pastel-purple-text: #a855f7;
+
+    --pastel-pink: #fdf2f8;
+    --pastel-pink-border: #fbcfe8;
+    --pastel-pink-text: #ec4899;
+
+    --pastel-orange: #fff7ed;
+    --pastel-orange-border: #ffedd5;
+    --pastel-orange-text: #f97316;
+
+    --pastel-gray: #f3f4f6;
+    --pastel-gray-border: #e5e7eb;
+    --pastel-gray-text: #4b5563;
+
+    /* Priority Colors */
+    --priority-high: #ef4444;
+    --priority-med: #eab308;
+    --priority-low: #10b981;
+
+    /* Utilities */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --shadow-modal: 0 20px 25px -5px rgba(0,0,0,0.1);
+    --transition-speed: 0.3s;
+}
+
+/* Biến số cho Dark Mode (Tùy chọn cho Navigation) */
+.theme-dark {
+    --bg-body: #111827;
+    --bg-surface: #1f2937;
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+    --border-color: #374151;
+    --pastel-red: #3f1d1d; /* Đảo màu nền sậm cho Darkmode */
+    --pastel-blue: #1e3a8a;
+    /* Có thể định nghĩa thêm chi tiết sau */
+}

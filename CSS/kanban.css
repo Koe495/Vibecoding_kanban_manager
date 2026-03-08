@@ -1,0 +1,204 @@
+/* ==========================================================================
+   FILE: kanban.css
+   CÔNG DỤNG: Xử lý layout 80/20, cấu trúc Bảng, Task và Menu 3 chấm
+   ========================================================================== */
+
+/* --- LAYOUT TỰ DO & SCROLLING TOÀN TRANG --- */
+#view-kanban {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 24px;
+    gap: 24px;
+    overflow-y: auto; /* Bật thanh cuộn dọc cho cả màn hình */
+    scroll-behavior: smooth; /* Cuộn mượt */
+}
+
+.kanban-area {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Vùng Active chiếm full màn hình, đẩy Completed xuống đáy */
+.active-area { 
+    min-height: calc(100vh - 210px); /* 100% màn hình trừ đi phần header Topbar */
+    flex-shrink: 0; /* Không cho phép bị ép nhỏ lại */
+}
+
+/* Vùng Completed bây giờ rộng rãi thoải mái, không bị giới hạn */
+.completed-area { 
+    min-height: 400px; /* Thích dài bao nhiêu cũng được */
+    flex-shrink: 0;
+    background-color: var(--bg-body); 
+    opacity: 0.9; 
+    transition: opacity 0.3s; 
+}
+.completed-area:hover { opacity: 1; }
+.completed-area.hidden { display: none !important; }
+
+.area-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-surface);
+}
+.area-header h3 { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.active-area .area-header h3 { color: var(--primary-color); }
+
+/* --- KHU VỰC CHỨA CÁC BẢNG (BOARDS) --- */
+.board-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 20px 24px;
+    overflow-x: auto; /* MỞ KHÓA CUỘN NGANG KHI NHIỀU BẢNG */
+    overflow-y: hidden;
+    min-height: 250px;
+    align-items: flex-start; 
+}
+
+/* --- CẤU TRÚC 1 BẢNG (COLUMN) --- */
+.board-column {
+    width: 300px; 
+    min-width: 250px;
+    max-width: 500px;
+    max-height: 100%;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-surface);
+    resize: horizontal; 
+    overflow: hidden; 
+}
+
+.board-header {
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    cursor: grab; 
+}
+.board-header:active { cursor: grabbing; }
+
+.board-title { font-weight: 700; font-size: 15px; }
+.board-actions { display: flex; align-items: center; gap: 8px; color: var(--text-muted); }
+
+/* Vùng chứa các task bên trong bảng */
+.board-task-list {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto; /* MỞ KHÓA CUỘN DỌC BÊN TRONG BẢNG */
+    flex: 1;
+    min-height: 50px; 
+}
+
+.board-footer { padding: 12px; border-top: 1px solid rgba(0,0,0,0.05); }
+.btn-add-task-board { width: 100%; padding: 8px; border: 1px dashed rgba(0,0,0,0.2); border-radius: var(--radius-sm); font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s; background: transparent; }
+.btn-add-task-board:hover { background-color: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.4); }
+
+/* --- TASK CARD (CÔNG VIỆC) --- */
+.task-card {
+    background-color: var(--bg-surface);
+    padding: 12px;
+    border-radius: var(--radius-md);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    cursor: grab;
+    border: 1px solid var(--border-color);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+.task-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.task-card:active { cursor: grabbing; transform: scale(0.98); }
+
+.task-checkbox-wrap { padding-top: 2px; }
+.task-checkbox-wrap input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--primary-color); }
+
+.task-content { flex: 1; min-width: 0; }
+.task-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; word-wrap: break-word; }
+.task-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Trạng thái hoàn thành */
+.task-card.completed { opacity: 0.6; background-color: var(--bg-body); box-shadow: none; }
+.task-card.completed .task-title { text-decoration: line-through; color: var(--text-muted); }
+
+/* Thẻ Tag */
+.task-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 10px; padding: 3px 6px; border-radius: 4px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
+.tag-high { background-color: var(--pastel-red); color: var(--priority-high); }
+.tag-med { background-color: var(--pastel-yellow); color: var(--priority-med); }
+.tag-low { background-color: var(--pastel-green); color: var(--priority-low); }
+
+/* --- MENU 3 CHẤM (THAY THẾ THÙNG RÁC CŨ) --- */
+.action-menu {
+    position: relative;
+    display: inline-block;
+}
+.action-menu-icon {
+    color: var(--text-muted);
+    padding: 4px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.action-menu-icon:hover { color: var(--text-main); }
+
+/* Vùng thả xuống của Menu */
+.menu-content {
+    display: none; 
+    position: absolute;
+    right: 0;
+    top: 100%; 
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    z-index: 100;
+    padding: 6px; /* Tăng padding ra cho thoáng */
+    flex-direction: column !important; /* Ép buộc phải xếp dọc */
+    gap: 6px !important; 
+    min-width: 40px;
+}
+/* Mở menu khi hover vào 3 chấm */
+.action-menu:hover .menu-content { 
+    display: flex !important; 
+}
+
+/* Căn chỉnh lại các nút bên trong */
+.action-btn {
+    background: none; 
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    width: 100%; /* Bắt buộc nút dàn trải đều để không bị co dúm */
+    position: static !important; /* Xóa sổ lệnh bám góc của thùng rác cũ */
+    opacity: 1 !important; /* Hiển thị rõ ràng 100% */
+}
+.btn-edit { color: var(--primary-color); }
+.btn-edit:hover { background: var(--primary-light); }
+.btn-delete { color: var(--priority-high); }
+.btn-delete:hover { background: var(--pastel-red); }
+.btn-edit { color: var(--primary-color); }
+.btn-edit:hover { background: var(--primary-light); }
+.btn-delete { color: var(--priority-high); }
+.btn-delete:hover { background: var(--pastel-red); }
+
+/* Drag Effects */
+.is-dragging { opacity: 0.4; }
+.board-task-list.drag-over { background-color: rgba(0,0,0,0.03); border-radius: var(--radius-md); box-shadow: inset 0 0 0 2px var(--primary-color); }

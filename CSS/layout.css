@@ -1,0 +1,83 @@
+/* ==========================================================================
+   FILE: layout.css
+   KẾT NỐI: index.html (Khung xương chính của ứng dụng)
+   ========================================================================== */
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: var(--bg-body);
+}
+
+/* --- TRÁI: SIDEBAR --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.sidebar-top { padding-top: 24px; }
+.sidebar-bottom { padding: 16px; border-top: 1px solid var(--border-color); }
+
+/* --- GIỮA: MAIN CONTENT --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Ngăn tràn layout */
+    background-color: var(--bg-body);
+}
+
+.topbar {
+    height: 80px;
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    flex-shrink: 0;
+}
+
+/* Vùng chứa các view (Kanban, Timetable, Projects) */
+.view-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.view-section {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.view-section.hidden {
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* --- PHẢI: RIGHT PANEL --- */
+.right-panel {
+    width: 340px;
+    background-color: var(--bg-surface);
+    border-left: 1px solid var(--border-color);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex-shrink: 0;
+    overflow-y: auto;
+    z-index: 10;
+}

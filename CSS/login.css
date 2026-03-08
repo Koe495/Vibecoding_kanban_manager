@@ -1,0 +1,74 @@
+/* ==========================================================================
+   FILE: css/login.css
+   CÔNG DỤNG: Dành riêng cho trang Đăng nhập / Đăng ký
+   ========================================================================== */
+
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Dùng gradient pastel cho cảm giác hiện đại */
+    background: linear-gradient(135deg, var(--bg-body) 0%, var(--primary-light) 100%);
+    padding: 20px;
+}
+
+.login-card {
+    background: var(--bg-surface);
+    width: 100%;
+    max-width: 420px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-modal);
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.logo-icon-large {
+    width: 48px;
+    height: 48px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin: 0 auto 16px;
+}
+.login-header h2 { font-size: 24px; color: var(--text-main); margin-bottom: 8px; }
+.login-header p { font-size: 14px; color: var(--text-muted); }
+
+/* Form Styles */
+.login-form { display: flex; flex-direction: column; gap: 20px; }
+
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
+.input-with-icon { position: relative; display: flex; align-items: center; }
+.input-with-icon i { position: absolute; left: 14px; color: var(--text-muted); font-size: 14px; }
+.input-with-icon input { width: 100%; padding: 12px 12px 12px 40px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; background-color: var(--bg-body); transition: all 0.2s; outline: none; }
+.input-with-icon input:focus { border-color: var(--primary-color); background-color: var(--bg-surface); box-shadow: 0 0 0 3px var(--primary-light); }
+.toggle-password { left: auto !important; right: 14px; cursor: pointer; }
+.toggle-password:hover { color: var(--text-main); }
+
+.form-options { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+.checkbox-container { display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-muted); }
+.checkbox-container input { cursor: pointer; accent-color: var(--primary-color); }
+.forgot-link { color: var(--primary-color); font-weight: 500; text-decoration: none; }
+.forgot-link:hover { text-decoration: underline; }
+
+.btn-login { background-color: var(--primary-color); color: white; border: none; padding: 14px; border-radius: var(--radius-md); font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; transition: background 0.2s; margin-top: 8px; }
+.btn-login:hover { background-color: var(--primary-hover); }
+
+.login-footer { margin-top: 32px; text-align: center; font-size: 13px; color: var(--text-muted); }
+.login-footer a { color: var(--primary-color); font-weight: 600; text-decoration: none; }
+.login-footer a:hover { text-decoration: underline; }
